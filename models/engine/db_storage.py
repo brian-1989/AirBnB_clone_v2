@@ -80,6 +80,12 @@ class DBStorage():
         """ This method create all tables of the data base and log in.
 
         """
+        from ..state import State, Base
+        from ..city import City
+        from ..user import User
+        from ..place import Place
+        from ..review import Review
+        from ..amenity import Amenity
         Base.metadata.create_all(self.__engine)
         self.__session = scoped_session(sessionmaker(
             expire_on_commit=False, bind=self.__engine))
