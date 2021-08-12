@@ -10,34 +10,22 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        if cls is None:
-            return FileStorage.__objects
-        else:
-            dct1 = {}
-            cls1 = str(cls)
-            lt0 = cls1.split(".")
-            cls2 = lt0[-1]
-            cls3 = cls2.replace("'>", "")
-            # print(cls3)
+        if FileStorage.__objects != {}:
+            my_dict = {}
+            my_list = str(cls).split('.')
+            for i in range(0, len(my_list)):
+                if i == 2:
+                    x = my_list[i].split('\'')
+                    cls = x[0]
+            if cls is None:
+                return FileStorage.__objects
             for key, value in FileStorage.__objects.items():
-                lt1 = key.split(".")
-                if lt1[0] == cls3:
-                    dct1[key] = value
-            # print(dct1)
-            return dct1
-
-    def new(self, obj):
-        """Adds new object to storage dictionary"""
-        self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
-
-    def save(self):
-        """Saves storage dictionary to file"""
-        with open(FileStorage.__file_path, 'w') as f:
-            temp = {}
-            temp.update(FileStorage.__objects)
-            for key, val in temp.items():
-                temp[key] = val.to_dict()
-            json.dump(temp, f)
+                list_keys = key.split('.')
+                if list_keys[0] == cls:
+                    my_dict[key] = value
+            return my_dict
+        else:
+            return FileStorage.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -82,7 +70,11 @@ class FileStorage:
 
         """
         if obj is not None:
-            objkey = "{}.{}".format(obj.__class__.__name__, obj.id)
-            if objkey in FileStorage.__objects.keys():
-                del FileStorage.__objects[objkey]
-                self.save()
+            try:
+                if obj.id:
+                    concat = "{}.{}".format(obj.__class__.__name__, obj.id)
+                    del FileStorage.__objects[concat]
+            except(AttributeError):
+                pass
+        else:
+            pass
