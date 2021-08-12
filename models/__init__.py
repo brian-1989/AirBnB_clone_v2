@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+""" This “switch” will allow you to change storage
+type directly by using an environment variable.
+
+"""
 from os import getenv
 
 if getenv("HBNB_TYPE_STORAGE") == "db":
