@@ -70,5 +70,7 @@ class FileStorage:
 
         """
         if obj is not None:
-            concat = "{}.{}".format(obj.__class__.__name__, obj.id)
-            del FileStorage.__objects[concat]
+            objkey = "{}.{}".format(obj.__class__.__name__, obj.id)
+            if objkey in FileStorage.__objects.keys():
+                del FileStorage.__objects[objkey]
+                self.save()
