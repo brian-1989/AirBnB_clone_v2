@@ -6,11 +6,10 @@ import models
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import session
-from sqlalchemy.orm.session import sessionmaker 
+from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.orm import scoped_session
 from models.base_model import BaseModel, Base
 from os import getenv
-
 
 
 class DBStorage():
