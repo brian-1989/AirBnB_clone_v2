@@ -70,11 +70,5 @@ class FileStorage:
 
         """
         if obj is not None:
-            try:
-                if obj.id:
-                    concat = "{}.{}".format(obj.__class__.__name__, obj.id)
-                    del FileStorage.__objects[concat]
-            except(AttributeError):
-                pass
-        else:
-            pass
+            concat = "{}.{}".format(obj.__class__.__name__, obj.id)
+            del FileStorage.__objects[concat]
