@@ -137,11 +137,8 @@ class HBNBCommand(cmd.Cmd):
             if type(my_list[1]) == str and '_' in my_list[1]:
                 my_list[1] = my_list[1].replace('_', ' ')
             setattr(new_instance, my_list[0], my_list[1])
-        """ storage.new(new_instance)
-        storage.save() """
         print(new_instance.id)
         new_instance.save()
-        """ storage.save() """
 
     def help_create(self):
         """ Help information for the create method """
