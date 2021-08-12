@@ -3,7 +3,7 @@
 from sqlalchemy.orm import backref, relationship
 from models.base_model import BaseModel
 from sqlalchemy.sql.schema import Column, ForeignKey
-from sqlalchemy.sql.sqltypes import FLOAT, Float, Integer, String
+from sqlalchemy.sql.sqltypes import Float, Integer, String
 from models.base_model import Base, BaseModel
 from os import getenv
 
