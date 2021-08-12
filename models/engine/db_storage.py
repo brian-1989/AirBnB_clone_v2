@@ -48,14 +48,13 @@ class DBStorage():
             for obj in self.__session.query(cls):
                 key_obj = obj.__class__.__name__ + '.' + obj.id
                 my_dict[key_obj] = obj
-            return my_dict
         else:
             my_list = [User, State, City, Place, Review]
             for _list in my_list:
                 for obj in self.__session.query(_list):
                     key_obj = obj.__class__.__name__ + '.' + obj.id
                     my_dict[key_obj] = obj
-            return my_dict
+        return my_dict
 
     def new(self, obj):
         """ This method add an new object.
