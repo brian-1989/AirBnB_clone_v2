@@ -7,6 +7,7 @@ from fabric.api import local
 from datetime import datetime
 import os
 
+
 def do_pack():
     """ This function generate an file with extension (.tgz) to compress
     a folder.
@@ -14,7 +15,8 @@ def do_pack():
     """
     date = str(datetime.now())
     # The date is oganized
-    date = date.replace("-", "").replace(" ", "").replace(":", "").replace(".", "")
+    date = date.replace("-", "").replace(" ", "").\
+        replace(":", "").replace(".", "")
     # Condition to check if the folder exists
     if not os.path.exists('versions'):
         os.makedirs('versions')
