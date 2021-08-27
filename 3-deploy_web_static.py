@@ -7,7 +7,7 @@ from fabric.api import *
 from datetime import datetime
 import os
 
-env.hosts = ['34.75.30.56', '54.234.166.77']
+env.hosts = ['54.234.166.77']
 env.user = 'ubuntu'
 
 
@@ -75,6 +75,11 @@ def do_deploy(archive_path):
     if move_file.failed:
         return False
     # Delete symbolic_link
+    delete_path = run(
+        "rm -rf /data/web_static/releases/{}/web_static/".format(
+            file_name[0]))
+    if delete_path.failed:
+        return False
     delete_symbolic_link = run("rm -rf /data/web_static/current")
     if delete_symbolic_link.failed:
         return False
