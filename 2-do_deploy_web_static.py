@@ -14,12 +14,12 @@ def do_deploy(archive_path):
     """ This function distributes an archive to your web servers.
 
     """
-    # From the archive_path variable, the name of the archive is extracted
-    file_name_tgz = archive_path.split('/')
-    file_name = file_name_tgz[1].split('.')
     # Check if the file exists
     if not os.path.exists(archive_path):
         return False
+    # From the archive_path variable, the name of the archive is extracted
+    file_name_tgz = archive_path.split('/')
+    file_name = file_name_tgz[1].split('.')
     # Upload the file in the directory /tmp/
     upload_file = put(archive_path, "/tmp/")
     if upload_file.failed:
