@@ -48,6 +48,11 @@ def do_deploy(archive_path):
     if move_file.failed:
         return False
     # Delete symbolic_link
+    delete_path = run(
+        "rm -rf /data/web_static/releases/{}/web_static/".format(
+            file_name[0]))
+    if delete_path.failed:
+        return False
     delete_symbolic_link = run("rm -rf /data/web_static/current")
     if delete_symbolic_link.failed:
         return False
