@@ -3,7 +3,6 @@
 
 """
 
-from os import replace
 from flask import Flask
 from markupsafe import escape
 
