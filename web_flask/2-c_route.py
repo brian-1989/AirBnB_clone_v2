@@ -30,7 +30,7 @@ def HBNB():
 def C(text):
     """ This function start an application in an address URL '/c/<text>'.
     The 'text' variable, is a variable that is passed from browser together with the URL.
-    Return: C and the value of the text variable.
+    Return: C and the value of the 'text' variable.
 
     """
     without_underscore = escape(text).replace('_', ' ')
