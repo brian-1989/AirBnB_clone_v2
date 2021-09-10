@@ -61,7 +61,7 @@ def number(n):
     Return: the value of the 'n' variable is a number.
 
     """
-    if isinstance(eval(escape(n)), int):
+    if escape(n).isdecimal():
         return "{} is a number".format(escape(n))
     else:
         abort(404)
