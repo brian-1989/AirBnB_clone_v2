@@ -5,7 +5,6 @@
 
 from flask import Flask, abort
 from markupsafe import escape
-from werkzeug.exceptions import InternalServerError, NotFound
 
 app = Flask(__name__)
 
