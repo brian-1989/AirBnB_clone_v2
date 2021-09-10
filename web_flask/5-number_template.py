@@ -56,7 +56,7 @@ def pyhton_is_cool(text='is cool'):
 @app.route("/number/<n>", strict_slashes=False)
 def number(n):
     """ This function start an application in an address URL '/number/<n>'.
-    The 'text' variable, is a variable that is passed from browser
+    The 'n' variable, is a variable that is passed from browser
     together with the URL.
     Return: the value of the 'n' variable is a number if n' variable
     if a integer. Otherwise error 404.
@@ -72,7 +72,7 @@ def number(n):
 def number_template(n):
     """ This function start an application in an address URL
     '/number_template/<n>'.
-    The 'text' variable, is a variable that is passed from browser
+    The 'n' variable, is a variable that is passed from browser
     together with the URL.
     Return: An Html page if the 'n' variable if a integer. Otherwise error 404.
 
