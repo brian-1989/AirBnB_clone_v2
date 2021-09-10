@@ -58,7 +58,7 @@ def number(n):
     """ This function start an application in an address URL '/number/<n>''.
     The 'text' variable, is a variable that is passed from browser
     together with the URL.
-    Return: Python and the value of the 'text' variable.
+    Return: the value of the 'n' variable is a number.
 
     """
     if isinstance(eval(escape(n)), int):
