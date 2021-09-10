@@ -55,7 +55,7 @@ def pyhton_is_cool(text='is cool'):
 
 @app.route("/number/<n>", strict_slashes=False)
 def number(n):
-    """ This function start an application in an address URL '/number/<n>''.
+    """ This function start an application in an address URL '/number/<n>'.
     The 'text' variable, is a variable that is passed from browser
     together with the URL.
     Return: the value of the 'n' variable is a number.
