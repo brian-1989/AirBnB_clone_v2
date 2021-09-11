@@ -18,7 +18,6 @@ def cities_by_states():
     Return: An Html page with the states.
 
     """
-    storage.close()
     states = storage.all(State).values()
     cities = storage.all(City).values()
     return render_template('8-cities_by_states.html', states=states, cities=cities)
