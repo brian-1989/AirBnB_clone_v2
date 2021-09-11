@@ -7,7 +7,7 @@
         <H1>States</H1>
         <UL>
             {% for i in states %}
-            <LI>{{ i.id }}: <B>{{ i.name }}</B></LI>
+            <LI>{{ i.id }}: <B>{{ i.name }}</B>
                 <UL>
                     {% for j in cities %}
                     {% if i.id == j.state_id %}
@@ -15,6 +15,7 @@
                     {% endif %}
                     {% endfor %}
                 </UL>
+            </LI>
             {% endfor %}
         </UL>
     </BODY>
