@@ -20,6 +20,7 @@ def states_list():
     states = storage.all(State).values()
     return render_template('7-states_list.html', states=states)
 
+
 @app.teardown_appcontext
 def teardown(error):
     """ This method after each request you must remove
