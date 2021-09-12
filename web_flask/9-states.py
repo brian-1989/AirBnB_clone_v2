@@ -22,7 +22,7 @@ def states():
     states = storage.all(State).values()
     return render_template("9-states.html", states=states)
 
-
+@app.route("/states", strict_slashes=False)
 @app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
     """ This function start an application in an address URL
@@ -32,17 +32,21 @@ def states_id(id):
     Return: An Html page with the states.
 
     """
-    states_id = storage.all(State).values()
-    cities_id = storage.all(City).values()
-    for i in cities_id:
-        if escape(id) == i.state_id:
-            my_flag = True
-            return render_template(
-                "9-states.html",
-                states_id=states_id,
-                cities_id=cities_id, id=escape(id), my_flag=my_flag)
-    my_flag = False
-    return render_template("9-states.html", id=my_flag)
+    if id:
+        states_id = storage.all(State).values()
+        cities_id = storage.all(City).values()
+        for i in cities_id:
+            if escape(id) == i.state_id:
+                my_flag = True
+                return render_template(
+                    "9-states.html",
+                    states_id=states_id,
+                    cities_id=cities_id, id=escape(id), my_flag=my_flag)
+        my_flag = False
+        return render_template("9-states.html", id=my_flag)
+    else:
+        states = storage.all(State).values()
+        return render_template("9-states.html", states=states)
 
 
 @app.teardown_appcontext
