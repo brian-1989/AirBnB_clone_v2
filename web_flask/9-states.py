@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/states", strict_slashes=False)
 @app.route("/states/<id>", strict_slashes=False)
-def states_id(id):
+def states_id(id=None):
     """ This function start an application in an address URL
     '/states/<id>'.
     The 'id' variable, is a variable that is passed from browser
@@ -22,7 +22,7 @@ def states_id(id):
     Return: An Html page with the states.
 
     """
-    if id:
+    if id != None:
         states_id = storage.all(State).values()
         cities_id = storage.all(City).values()
         for i in cities_id:
