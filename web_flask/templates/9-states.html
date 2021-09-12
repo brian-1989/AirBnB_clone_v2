@@ -4,14 +4,14 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-        {% if states %}
+        {% if states is defined %}
             <H1>States</H1>
             <UL>
                 {% for state in states | sort(attribute="name") %}
                 <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
                 {% endfor %}
             </UL>
-        {% elif my_flag %}
+        {% elif my_flag is defined %}
             {% for i in states_id | sort(attribute="name") %}
             {% if id == i.id %}
             <H1>State: {{ i.name }}</H1>
