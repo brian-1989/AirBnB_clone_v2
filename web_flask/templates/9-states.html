@@ -11,8 +11,7 @@
                 <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
                 {% endfor %}
             </UL>
-        {% endif %}
-        {% if my_flag %}
+        {% elif my_flag %}
             {% for i in states_id | sort(attribute="name") %}
             {% if id == i.id %}
             <H1>State: {{ i.name }}</H1>
