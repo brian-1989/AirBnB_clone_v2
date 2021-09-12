@@ -13,17 +13,17 @@
             </UL>
         {% elif my_flag %}
             {% for i in states_id | sort(attribute="name") %}
-            {% if id == i.id %}
-            <H1>State: {{ i.name }}</H1>
-            <H3>Cities:</H3>
-            <UL>
-                {% for j in cities_id | sort(attribute="name") %}
-                {% if id == j.state_id %}
-                <LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
+                {% if id == i.id %}
+                <H1>State: {{ i.name }}</H1>
+                <H3>Cities:</H3>
+                <UL>
+                    {% for j in cities_id | sort(attribute="name") %}
+                        {% if id == j.state_id %}
+                        <LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
+                        {% endif %}
+                    {% endfor %}
+                </UL>
                 {% endif %}
-                {% endfor %}
-            </UL>
-            {% endif %}
             {% endfor %}
         {% else %}
         <H1>Not found!</H1>
