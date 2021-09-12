@@ -5,7 +5,7 @@
     </HEAD>
     <BODY>
         {% if my_flag %}
-            {% for i in states | sort(attribute="name") %}
+            {% for i in states_with_id | sort(attribute="name") %}
             {% if id == i.id %}
             <H1>State: {{ i.name }}</H1>
             <H3>Cities:</H3>
