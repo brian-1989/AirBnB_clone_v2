@@ -13,21 +13,37 @@ app = Flask(__name__)
 
 
 @app.route("/states", strict_slashes=False)
+def states():
+    """ This function start an application in an address URL
+    '/states'.
+    Return: An Html page with the states.
+
+    """
+    states = storage.all(State).values()
+    return render_template("9-states.html", states=states)
+
+
 @app.route("/states/<id>", strict_slashes=False)
-def all_states(id=None):
-    """ This function use storage for fetching data from
-        the storage engine: FileStorage or DBStorage.
-        If <id> is not specified display all states, otherwise
-        """
-    if id is None:
-        is_state = storage.all(State).values()
-        return render_template('9-states.html', states=is_state)
-    else:
-        for element in storage.all(State).values():
-            if element.id == id:
-                return render_template('9-states.html', states_id=element)
-        # last return for "not found!" -> evite TypeError
-        return render_template('9-states.html')
+def states_id(id):
+    """ This function start an application in an address URL
+    '/states/<id>'.
+    The 'id' variable, is a variable that is passed from browser
+    together with the URL.
+    Return: An Html page with the states.
+
+    """
+    states_id = storage.all(State).values()
+    cities_id = storage.all(City).values()
+    for i in cities_id:
+        if escape(id) == i.state_id:
+
+            my_flag = True
+            return render_template(
+                "9-states.html",
+                states_id=states_id,
+                cities_id=cities_id, id=escape(id), my_flag=my_flag)
+    my_flag = False
+    return render_template("9-states.html", id=my_flag)
 
 
 @app.teardown_appcontext
