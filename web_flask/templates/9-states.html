@@ -4,29 +4,21 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-        {% if states is defined %}
-        <H1>States</H1>
-        <UL>
-            {% for state in states | sort(attribute="name") %}
-            <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
-            {% endfor %}
-        </UL>
-        {% elif my_flag is defined %}
-        {% for i in states_id | sort(attribute="name") %}
-        {% if id == i.id %}
-        <H1>State: {{ i.name }}</H1>
-        <H3>Cities:</H3>
-        <UL>
-            {% for j in cities_id | sort(attribute="name") %}
-            {% if id == j.state_id %}
-            <LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
+        {% if my_flag %}
+            {% for i in states | sort(attribute="name") %}
+            {% if id == i.id %}
+            <H1>State: {{ i.name }}</H1>
+            <H3>Cities:</H3>
+            <UL>
+                {% for j in i.cities | sort(attribute="name") %}
+                <LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
+                {% endfor %}
+            </UL>
             {% endif %}
             {% endfor %}
-        </UL>
-        {% endif %}
-        {% endfor %}
         {% else %}
         <H1>Not found!</H1>
         {% endif %}
+
     </BODY>
 </HTML>
