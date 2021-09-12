@@ -32,16 +32,13 @@ def states_id(id):
     Return: An Html page with the states.
 
     """
-    states_id = storage.all(State).values()
-    cities_id = storage.all(City).values()
-    for i in cities_id:
-        if escape(id) == i.state_id:
-
+    states = storage.all(State).values()
+    for i in states:
+        if escape(id) == i.id:
             my_flag = True
             return render_template(
                 "9-states.html",
-                states_id=states_id,
-                cities_id=cities_id, id=escape(id), my_flag=my_flag)
+                states=states, id=escape(id), my_flag=my_flag)
     my_flag = False
     return render_template("9-states.html", id=my_flag)
 
