@@ -20,7 +20,7 @@ def states():
 
     """
     states = storage.all(State).values()
-    return render_template("9-states.html", states=states)
+    return render_template("7-states_list.html", states=states)
 
 
 @app.route("/states/<id>", strict_slashes=False)
@@ -32,13 +32,13 @@ def states_id(id):
     Return: An Html page with the states.
 
     """
-    states = storage.all(State).values()
-    for i in states:
+    states_with_id = storage.all(State).values()
+    for i in states_with_id:
         if escape(id) == i.id:
             my_flag = True
             return render_template(
                 "9-states.html",
-                states=states, id=escape(id), my_flag=my_flag)
+                states_with_id=states_with_id, id=escape(id), my_flag=my_flag)
     my_flag = False
     return render_template("9-states.html", id=my_flag)
 
