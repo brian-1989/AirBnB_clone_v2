@@ -4,13 +4,21 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
+        {% if states %}
+            <H1>States</H1>
+            <UL>
+                {% for state in states | sort(attribute="name") %}
+                <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
+                {% endfor %}
+            </UL>
+        {% endif %}
         {% if my_flag %}
-            {% for i in states | sort(attribute="name") %}
+            {% for i in states_id | sort(attribute="name") %}
             {% if id == i.id %}
             <H1>State: {{ i.name }}</H1>
             <H3>Cities:</H3>
             <UL>
-                {% for j in cities | sort(attribute="name") %}
+                {% for j in cities_id | sort(attribute="name") %}
                 {% if id == j.state_id %}
                 <LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
                 {% endif %}
