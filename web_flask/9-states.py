@@ -13,16 +13,6 @@ app = Flask(__name__)
 
 
 @app.route("/states", strict_slashes=False)
-def states():
-    """ This function start an application in an address URL
-    '/states'.
-    Return: An Html page with the states.
-
-    """
-    states = storage.all(State).values()
-    return render_template("9-states.html", states=states)
-
-@app.route("/states", strict_slashes=False)
 @app.route("/states/<id>", strict_slashes=False)
 def states_id(id):
     """ This function start an application in an address URL
